@@ -216,13 +216,13 @@ authorNameAndColorFromAuthorId = function(authorId){
 };
 authorLines = {};
 out$.acePostWriteDomLineHTML = acePostWriteDomLineHTML;
-function acePostWriteDomLineHTML(hook_name, args, cb){
+function acePostWriteDomLineHTML(hook_name, args) {
   return setTimeout(function(){
     return updateDomline($(args.node));
   }, 200);
 }
 out$.aceEditEvent = aceEditEvent;
-function aceEditEvent(hook_name, context, cb){
+function aceEditEvent(hook_name, context) {
   var callstack, x$;
   callstack = context.callstack;
   if (callstack.type !== 'setWraps') {
