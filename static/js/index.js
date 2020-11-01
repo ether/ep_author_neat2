@@ -1,4 +1,4 @@
-var $sidedivinner, fadeColor, getAuthorClassName, init, authorNameAndColorFromAuthorId, authorLines, isStyleFuncSupported, out$ = typeof exports != 'undefined' && exports || this;
+var $sidedivinner, getAuthorClassName, init, authorNameAndColorFromAuthorId, out$ = typeof exports != 'undefined' && exports || this;
 function allClasses($node){
   var ref$;
   return ((ref$ = $node.attr('class')) != null ? ref$ : '').split(' ');
@@ -123,11 +123,6 @@ function authorViewUpdate($node, lineNumber, prevAuthor, authorClass){
     return authorViewUpdate(next, lineNumber + 1, logicalPrevAuthor);
   }
 }
-fadeColor = function(colorCSS, fadeFrac){
-  var color;
-  color = colorutils.css2triple(colorCSS);
-  return colorutils.triple2css(colorutils.blend(color, [1, 1, 1], fadeFrac));
-};
 getAuthorClassName = function(author){
   return 'author-' + author.replace(/[^a-y0-9]/g, function(c){
     if (c === '.') {
@@ -217,7 +212,6 @@ authorNameAndColorFromAuthorId = function(authorId){
     color: '#fff'
   };
 };
-authorLines = {};
 out$.acePostWriteDomLineHTML = acePostWriteDomLineHTML;
 function acePostWriteDomLineHTML(hook_name, args) {
   return setTimeout(function(){
@@ -241,33 +235,3 @@ function aceEditEvent(hook_name, context) {
   });
   return x$;
 }
-isStyleFuncSupported = CSSStyleDeclaration.prototype.getPropertyValue != null;
-if (!isStyleFuncSupported) {
-  CSSStyleDeclaration.prototype.getPropertyValue = function(a){
-    return this.getAttribute(a);
-  };
-  CSSStyleDeclaration.prototype.setProperty = function(styleName, value, priority){
-    var rule;
-    this.setAttribute(styleName, value);
-    priority = typeof priority !== 'undefined' ? priority : '';
-    if (!(priority === '')) {
-      rule = new RegExp(RegExp.escape(styleName) + '\\s*:\\s*' + RegExp.escape(value + '(\\s*;)?', 'gmi'));
-      return this.cssText = this.cssText.replace(rule, styleName + ': ' + value + ' !' + priority + ';');
-    }
-  };
-  CSSStyleDeclaration.prototype.removeProperty = function(a){
-    return this.removeAttribute(a);
-  };
-  CSSStyleDeclaration.prototype.getPropertyPriority = function(styleName){
-    var rule;
-    rule = new RegExp(RegExp.escape(styleName) + '\\s*:\\s*[^\\s]*\\s*!important(\\s*;)?', 'gmi');
-    if (rule.test(this.cssText)) {
-      return 'important';
-    } else {
-      return '';
-    }
-  };
-}
-RegExp.escape = function(text){
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-};
