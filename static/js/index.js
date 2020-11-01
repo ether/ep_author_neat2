@@ -11,7 +11,7 @@ function postAceInit(hook_name, arg$){
   if (!$('#editorcontainerbox').hasClass('flex-layout')) {
     return $.gritter.add({
       title: "Error",
-      text: "Ep_author_neat: Please upgrade to etherpad 1.8.4 for this plugin to work correctly",
+      text: 'ep_author_neat2: Please upgrade to Etherpad 1.8.4 for this plugin to work correctly',
       sticky: true,
       class_name: "error"
     });

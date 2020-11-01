@@ -1,23 +1,23 @@
 {
-  "author": {
-    "name": [
-      "Chia-liang Kao"
-    ],
-    "email": "clkao@clkao.org"
-  },
-  "contributors": [
-    {
-      "name": "John McLear",
-      "email": "john@mclear.co.uk",
-      "url": "http://mclear.co.uk"
-    }
-  ],
-  "name": "ep_author_neat",
+  "name": "ep_author_neat2",
+  "version": "2.0.0",
   "description": "Etherpad plugin that uses colored underlines instead of colored backgrounds to indicate authorship.",
-  "version": "0.0.33",
   "repository": {
     "type": "git",
-    "url": "git://github.com/clkao/ep_author_neat.git"
+    "url": "https://github.com/ether/ep_author_neat2.git"
   },
-  "license": "MIT"
+  "keywords": [
+    "ep",
+    "etherpad",
+    "plugin"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ether/ep_author_neat2/issues"
+  },
+  "homepage": "https://github.com/ether/ep_author_neat2#readme",
+  "funding": {
+    "type": "individual",
+    "url": "http://etherpad.org/"
+  }
 }
