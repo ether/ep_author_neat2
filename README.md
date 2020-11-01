@@ -1,13 +1,13 @@
-ep_author_neat
-==============
+# ep_author_neat
 
-Use colored underline for authorship instead of background color.
+[Etherpad](https://etherpad.org) plugin that uses colored underlines instead of
+colored backgrounds to indicate authorship.
 
-*This requires etherpad-lite 1.3.0 or later*.
+*This requires Etherpad 1.8.4 or later.*
 
-Left: original etherpad-lite; Right: ep_author_neat enabled
+Left: original Etherpad; right: ep_author_neat enabled.
 
-![ep_author_neat](https://raw.github.com/clkao/ep_author_neat/master/thumbnail.png "ep_author_neat")
+![ep_author_neat](thumbnail.png "ep_author_neat")
 
 ## Copyright and License
 
