@@ -19,6 +19,7 @@
     "type": "git",
     "url": "git://github.com/clkao/ep_author_neat.git"
   },
+  "license": "MIT",
   "engines": {
     "node": "*"
   },
