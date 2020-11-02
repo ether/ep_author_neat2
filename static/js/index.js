@@ -152,12 +152,12 @@ function aceSetAuthorStyle(name, context){
   if (!init) {
     outerInit(outerDynamicCSS);
   }
+  authorClass = getAuthorClassName(author);
   authorSelector = ".authorColors span." + authorClass;
   if (info) {
     if (!(color = info.bgcolor)) {
       return 1;
     }
-    authorClass = getAuthorClassName(author);
     authorName = authorNameAndColorFromAuthorId(author).name;
     x$ = dynamicCSS.selectorStyle("#innerdocbody.authorColors span." + authorClass);
     x$.borderBottom = "2px solid " + color;
