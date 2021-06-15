@@ -97,11 +97,7 @@ const authorViewUpdate = ($node, lineNumber, prevAuthor, authorClass) => {
       }
     }
   }
-  if (prevAuthor === authorClass) {
-    $authorContainer.addClass('concise');
-  } else {
-    $authorContainer.removeClass('concise');
-  }
+  $authorContainer.toggleClass('concise', prevAuthor === authorClass);
   const prevId = (ref$ = $authorContainer.attr('id')) != null ? ref$.replace(/^ref-/, '') : void 8;
   if (prevId === $node.attr('id')) {
     authorChanged = toggleAuthor($authorContainer, 'primary', authorClass);
