@@ -23,7 +23,7 @@ const derivePrimaryAuthor = ($node) => {
     const $this = $(this);
     for (const spanclass of this.classList) {
       if (/^author/.exec(spanclass)) {
-        byAuthor[spanclass] == null && (byAuthor[spanclass] = 0);
+        if (byAuthor[spanclass] == null) byAuthor[spanclass] = 0;
         results$.push(byAuthor[spanclass] += $this.text().length);
       }
     }
@@ -87,7 +87,7 @@ const authorViewUpdate = ($node, lineNumber, prevAuthor, authorClass) => {
     $sidedivinner = $('iframe[name="ace_outer"]').contents().find('#sidedivinner');
   }
   const $authorContainer = $sidedivinner.find(`div:nth-child(${lineNumber})`);
-  authorClass == null && (authorClass = extractAuthor($node));
+  if (authorClass == null) authorClass = extractAuthor($node);
   if (!prevAuthor) {
     prev = $authorContainer;
     while ((prev = prev.prev()) && prev.length) {
