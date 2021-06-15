@@ -32,10 +32,9 @@ const derivePrimaryAuthor = ($node) => {
   mPA = 0;
   authorClass = null;
   for (const [author, value] of Object.entries(byAuthor)) {
-    if (value > mPA) {
-      mPA = value;
-      authorClass = author;
-    }
+    if (value <= mPA) continue;
+    mPA = value;
+    authorClass = author;
   }
   return authorClass;
 };
@@ -45,12 +44,11 @@ const toggleAuthor = ($node, prefix, authorClass) => {
   let hasClass = false;
   const myClass = `${prefix}-${authorClass}`;
   for (const c of $node[0].classList) {
-    if (c.indexOf(prefix) === 0) {
-      if (c === myClass) {
-        hasClass = true;
-      } else {
-        $node.removeClass(c);
-      }
+    if (c.indexOf(prefix) !== 0) continue;
+    if (c === myClass) {
+      hasClass = true;
+    } else {
+      $node.removeClass(c);
     }
   }
   if (hasClass) {
