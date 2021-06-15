@@ -2,14 +2,13 @@
 
 let $sidedivinner;
 let init;
-const out$ = typeof exports !== 'undefined' && exports || this;
 
 const allClasses = ($node) => {
   let ref$;
   return ((ref$ = $node.attr('class')) != null ? ref$ : '').split(' ');
 };
 
-out$.postAceInit = (hookName, arg$) => {
+exports.postAceInit = (hookName, arg$) => {
   $sidedivinner = $('iframe[name="ace_outer"]').contents().find('#sidedivinner');
   if (!$('#editorcontainerbox').hasClass('flex-layout')) {
     return $.gritter.add({
@@ -153,7 +152,7 @@ const outerInit = (outerDynamicCSS) => {
   return init = true;
 };
 
-out$.aceSetAuthorStyle = (name, context) => {
+exports.aceSetAuthorStyle = (name, context) => {
   const dynamicCSS = context.dynamicCSS;
   const outerDynamicCSS = context.outerDynamicCSS;
   const parentDynamicCSS = context.parentDynamicCSS;
@@ -229,10 +228,10 @@ const authorNameAndColorFromAuthorId = (authorId) => {
   };
 };
 
-out$.acePostWriteDomLineHTML =
+exports.acePostWriteDomLineHTML =
     (hookName, args) => setTimeout(() => updateDomline($(args.node)), 200);
 
-out$.aceEditEvent = (hookName, context) => {
+exports.aceEditEvent = (hookName, context) => {
   const callstack = context.callstack;
   if (callstack.type !== 'setWraps') {
     return;
