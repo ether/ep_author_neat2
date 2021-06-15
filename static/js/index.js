@@ -3,11 +3,6 @@
 let $sidedivinner;
 let init;
 
-const allClasses = ($node) => {
-  let ref$;
-  return ((ref$ = $node.attr('class')) != null ? ref$ : '').split(' ');
-};
-
 exports.postAceInit = (hookName, arg$) => {
   $sidedivinner = $('iframe[name="ace_outer"]').contents().find('#sidedivinner');
   if (!$('#editorcontainerbox').hasClass('flex-layout')) {
@@ -24,11 +19,9 @@ const derivePrimaryAuthor = ($node) => {
   let mPA, authorClass;
   const byAuthor = {};
   $node.find('span').each(function () {
-    let i$, ref$, len$, spanclass;
     const results$ = [];
     const $this = $(this);
-    for (i$ = 0, len$ = (ref$ = allClasses($this)).length; i$ < len$; ++i$) {
-      spanclass = ref$[i$];
+    for (const spanclass of this.classList) {
       if (/^author/.exec(spanclass)) {
         byAuthor[spanclass] == null && (byAuthor[spanclass] = 0);
         results$.push(byAuthor[spanclass] += $this.text().length);
@@ -48,11 +41,10 @@ const derivePrimaryAuthor = ($node) => {
 };
 
 const toggleAuthor = ($node, prefix, authorClass) => {
-  let hasClass, i$, ref$, len$, c;
-  hasClass = false;
+  if ($node.length === 0) return true;
+  let hasClass = false;
   const myClass = `${prefix}-${authorClass}`;
-  for (i$ = 0, len$ = (ref$ = allClasses($node)).length; i$ < len$; ++i$) {
-    c = ref$[i$];
+  for (const c of $node[0].classList) {
     if (c.indexOf(prefix) === 0) {
       if (c === myClass) {
         hasClass = true;
@@ -79,12 +71,10 @@ const updateDomline = ($node) => {
 };
 
 const extractAuthor = ($node) => {
-  let ref$, a, ref1$;
+  let ref$, ref1$;
   return (ref$ = (() => {
-    let i$, ref$, len$;
     const results$ = [];
-    for (i$ = 0, len$ = (ref$ = allClasses($node)).length; i$ < len$; ++i$) {
-      a = ref$[i$];
+    for (const a of $node[0].classList) {
       if (/^primary-/.exec(a)) {
         results$.push(a);
       }
