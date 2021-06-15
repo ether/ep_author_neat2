@@ -21,7 +21,7 @@ const derivePrimaryAuthor = ($node) => {
   $node.find('span').each(function () {
     const $this = $(this);
     for (const spanclass of this.classList) {
-      if (/^author/.exec(spanclass)) {
+      if (spanclass.startsWith('author')) {
         byAuthor[spanclass] = (byAuthor[spanclass] || 0) + $this.text().length;
       }
     }
@@ -70,9 +70,7 @@ const extractAuthor = ($node) => {
   return (ref$ = (() => {
     const results$ = [];
     for (const a of $node[0].classList) {
-      if (/^primary-/.exec(a)) {
-        results$.push(a);
-      }
+      if (a.startsWith('primary-')) results$.push(a);
     }
     return results$;
   })()) != null ? (ref1$ = ref$[0]) != null ? ref1$.replace(/^primary-/, '') : void 8 : void 8;
