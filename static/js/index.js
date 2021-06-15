@@ -17,18 +17,18 @@ exports.postAceInit = (hookName, context) => {
 
 const derivePrimaryAuthor = ($node) => {
   let mPA, authorClass;
-  const byAuthor = {};
+  const byAuthor = new Map();
   $node.find('span').each(function () {
     const $this = $(this);
     for (const spanclass of this.classList) {
       if (spanclass.startsWith('author')) {
-        byAuthor[spanclass] = (byAuthor[spanclass] || 0) + $this.text().length;
+        byAuthor.set(spanclass, (byAuthor.get(spanclass) || 0) + $this.text().length);
       }
     }
   });
   mPA = 0;
   authorClass = null;
-  for (const [author, value] of Object.entries(byAuthor)) {
+  for (const [author, value] of byAuthor) {
     if (value <= mPA) continue;
     mPA = value;
     authorClass = author;
