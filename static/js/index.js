@@ -3,7 +3,7 @@
 let $sidedivinner;
 let init;
 
-exports.postAceInit = (hookName, arg$) => {
+exports.postAceInit = (hookName, context) => {
   $sidedivinner = $('iframe[name="ace_outer"]').contents().find('#sidedivinner');
   if (!$('#editorcontainerbox').hasClass('flex-layout')) {
     return $.gritter.add({
@@ -142,7 +142,7 @@ const outerInit = (outerDynamicCSS) => {
   return init = true;
 };
 
-exports.aceSetAuthorStyle = (name, context) => {
+exports.aceSetAuthorStyle = (hookName, context) => {
   const dynamicCSS = context.dynamicCSS;
   const outerDynamicCSS = context.outerDynamicCSS;
   const parentDynamicCSS = context.parentDynamicCSS;
@@ -219,7 +219,7 @@ const authorNameAndColorFromAuthorId = (authorId) => {
 };
 
 exports.acePostWriteDomLineHTML =
-    (hookName, args) => setTimeout(() => updateDomline($(args.node)), 200);
+    (hookName, context) => setTimeout(() => updateDomline($(context.node)), 200);
 
 exports.aceEditEvent = (hookName, context) => {
   const callstack = context.callstack;
