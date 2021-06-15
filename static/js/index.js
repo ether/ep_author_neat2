@@ -19,15 +19,12 @@ const derivePrimaryAuthor = ($node) => {
   let mPA, authorClass;
   const byAuthor = {};
   $node.find('span').each(function () {
-    const results$ = [];
     const $this = $(this);
     for (const spanclass of this.classList) {
       if (/^author/.exec(spanclass)) {
-        if (byAuthor[spanclass] == null) byAuthor[spanclass] = 0;
-        results$.push(byAuthor[spanclass] += $this.text().length);
+        byAuthor[spanclass] = (byAuthor[spanclass] || 0) + $this.text().length;
       }
     }
-    return results$;
   });
   mPA = 0;
   authorClass = null;
