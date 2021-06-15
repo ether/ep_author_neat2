@@ -143,11 +143,7 @@ const outerInit = (outerDynamicCSS) => {
 };
 
 exports.aceSetAuthorStyle = (hookName, context) => {
-  const dynamicCSS = context.dynamicCSS;
-  const outerDynamicCSS = context.outerDynamicCSS;
-  const parentDynamicCSS = context.parentDynamicCSS;
-  const info = context.info;
-  const author = context.author;
+  const {author, dynamicCSS, info, outerDynamicCSS, parentDynamicCSS} = context;
   if (!init) {
     outerInit(outerDynamicCSS);
   }
@@ -219,10 +215,9 @@ const authorNameAndColorFromAuthorId = (authorId) => {
 };
 
 exports.acePostWriteDomLineHTML =
-    (hookName, context) => setTimeout(() => updateDomline($(context.node)), 200);
+    (hookName, {node}) => setTimeout(() => updateDomline($(node)), 200);
 
-exports.aceEditEvent = (hookName, context) => {
-  const callstack = context.callstack;
+exports.aceEditEvent = (hookName, {callstack}) => {
   if (callstack.type !== 'setWraps') {
     return;
   }
