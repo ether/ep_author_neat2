@@ -1,3 +1,5 @@
+![Publish Status](https://github.com/ether/ep_author_neat2/workflows/Node.js%20Package/badge.svg) ![Backend Tests Status](https://github.com/ether/ep_author_neat2/workflows/Backend%20tests/badge.svg)
+
 # ep_author_neat2
 
 [Etherpad](https://etherpad.org) plugin that uses colored underlines instead of
