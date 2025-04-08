@@ -1,0 +1,16 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "48 0 * * 2"
+
+
+jobs:
+  analyze:
+        uses: ether/ether-pipelines/.github/workflows/codeql-plugins.yml@main
+        secrets: inherit
+
