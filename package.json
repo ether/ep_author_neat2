@@ -1,6 +1,6 @@
 {
   "name": "ep_author_neat2",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Etherpad plugin that uses colored underlines instead of colored backgrounds to indicate authorship.",
   "repository": {
     "type": "git",
