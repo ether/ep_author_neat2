@@ -14,6 +14,23 @@ Left: original Etherpad; right: ep_author_neat2 enabled.
 
 ![ep_author_neat2](thumbnail.png "ep_author_neat2")
 
+## Installation
+
+Install from the Etherpad admin UI (**Admin → Manage Plugins**,
+search for `ep_author_neat2` and click *Install*), or from the Etherpad
+root directory:
+
+```sh
+pnpm run plugins install ep_author_neat2
+```
+
+> ⚠️ Don't run `npm i` / `npm install` yourself from the Etherpad
+> source tree — Etherpad tracks installed plugins through its own
+> plugin-manager, and hand-editing `package.json` can leave the
+> server unable to start.
+
+After installing, restart Etherpad.
+
 ## Copyright and License
 
 Copyright © 2013 Chia-liang Kao <clkao@clkao.org>\
