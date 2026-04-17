@@ -158,7 +158,18 @@ exports.aceSetAuthorStyle = (hookName, context) => {
     z1$.borderRight = `solid 5px ${color}`;
     const z2$ = outerDynamicCSS.selectorStyle(
         `#sidedivinner.authorColors > div.primary-${authorClass}::before`);
-    z2$.content = `'${authorName}'`;
+    // Only write the label when we actually resolved a real name. If the
+    // user joined via ?userName=… the first aceSetAuthorStyle call often
+    // fires before USER_NEWINFO has populated #otheruserstable /
+    // historicalAuthorData, so the fallback was baking the literal text
+    // "Unknown Author" into CSS and it never updated when the name
+    // eventually arrived (#8). Leaving `content` unchanged means the
+    // later call (once the name is known) overwrites an empty rule with
+    // the correct label, while still showing the coloured border/highlight
+    // in the meantime.
+    if (authorName && authorName !== 'Unknown Author') {
+      z2$.content = `'${authorName}'`;
+    }
     z2$.paddingLeft = '5px';
     z2$.whiteSpace = 'nowrap';
     const z3$ = outerDynamicCSS.selectorStyle(
