@@ -1,6 +1,6 @@
 ![Demo](demo.gif) [![Backend Tests Status](https://github.com/ether/ep_author_neat2/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/ether/ep_author_neat2/actions/workflows/test-and-release.yml)
 
-# ep_author_neat2
+# Line Author Sidebar for Etherpad
 
 [Etherpad](https://etherpad.org) plugin that uses colored underlines instead of
 colored backgrounds to indicate authorship.
