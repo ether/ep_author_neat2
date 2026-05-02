@@ -1,4 +1,5 @@
 {
+  "disables": ["@feature:authorship-bg-color"],
   "parts": [
     {
       "name": "ep_author_neat2",
