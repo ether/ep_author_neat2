@@ -69,4 +69,11 @@ jobs:
           done
           cd src
           pnpm exec playwright install chromium --with-deps
-          pnpm run test-ui --project=chromium
+          # Use the declared-disables helper instead of plain test-ui:
+          # ep_author_neat2 renders authorship as a coloured underline
+          # rather than a coloured background, so ep.json declares
+          # `disables: ["@feature:authorship-bg-color"]`. The helper
+          # runs two passes — regression (untagged tests must pass) +
+          # honesty (tagged tests must FAIL because the bg-color is
+          # genuinely gone). See doc/PLUGIN_FEATURE_DISABLES.md.
+          ../bin/run-frontend-tests-with-disables.sh -- --project=chromium
