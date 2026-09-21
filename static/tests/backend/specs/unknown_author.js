@@ -9,10 +9,11 @@ const indexPath = path.resolve(
 
 describe(__filename, function () {
   let src;
-  before(function () { src = fs.readFileSync(indexPath, 'utf8'); });
+
+  before(async function () { src = fs.readFileSync(indexPath, 'utf8'); });
 
   it('aceSetAuthorStyle does not bake "Unknown Author" into ::before content (#8)',
-      function () {
+      async function () {
         const hookBody = src.match(/exports\.aceSetAuthorStyle\s*=\s*[\s\S]*?\n\};/);
         assert(hookBody, 'expected aceSetAuthorStyle export');
         // The hook used to write `z2$.content = '...${authorName}'` even
